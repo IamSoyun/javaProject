@@ -8,6 +8,8 @@ import java.sql.Statement;
 
 public class DBUtil {
 	
+	//hi
+	
 	static {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");

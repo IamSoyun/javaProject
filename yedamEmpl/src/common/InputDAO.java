@@ -108,16 +108,17 @@ public class InputDAO {
 		String sql = " UPDATE input_board "
 					+ " SET content = ?, " 
 					+ " 	exit_date = ?, " 
-					+ " 	publicity = ? " 
+					+ " 	publicity = ?, " 
+					+ "		title = ? "
 					+ " WHERE board_no = ?"; 
-		
 		
 		try {
 			stmt = con.prepareStatement(sql);
 			stmt.setString(1, vo.getContents());
 			stmt.setString(2, vo.getExitDate());
 			stmt.setString(3, vo.getPublicity());
-			stmt.setInt(4, vo.getBoardNo());
+			stmt.setString(4, vo.getTitle());
+			stmt.setInt(5, vo.getBoardNo());
 			int r = stmt.executeUpdate();
 			
 			System.out.println(r + "건 수정 완료.");

@@ -1,4 +1,4 @@
-package academy;
+package common;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,12 +15,29 @@ public class DButil {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+		
 	}
-
-	public static Connection getConnection(String url, String id, String password) {
+	
+	public static Connection getConnection() {
+		
+		String user = "hr";
+		String passwd = "hr";
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		
 		Connection conn = null;
 		try {
-			conn = DriverManager.getConnection(url, id, password);
+			conn = DriverManager.getConnection(url, user, passwd);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return conn;
+	}
+
+	public static Connection getConnection(String url, String user, String passwd) {
+		
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(url, user, passwd);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -14,10 +14,6 @@ public class InputDAO {
 	static Connection con = null;
 
 	Connection conn = null;
-
-	String user = "hr";
-	String passwd = "hr";
-	String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	
 	public InputDAO(){}
 	

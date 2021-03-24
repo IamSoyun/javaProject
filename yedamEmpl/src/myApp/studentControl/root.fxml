@@ -25,14 +25,14 @@
 					prefWidth="125.0" text="영어" />
 			</columns>
 		</TableView>
-		<Button fx:id="addBtn" layoutX="264.0" layoutY="291.0" 
-				onAction="#addBtnAction" text="추가">
+		<Button fx:id="addBtn" layoutX="224.0" layoutY="291.0"
+			onAction="#addBtnAction" text="추가">
 			<font>
 				<Font size="15.0" />
 			</font>
 		</Button>
-		<Button fx:id="viewGraphBtn" layoutX="330.0" layoutY="291.0" 
-				onAction="#viewGraphBtnAction" text="그래프">
+		<Button fx:id="viewBarChartBtn" layoutX="290.0" layoutY="291.0"
+			onAction="#viewBarChartBtnAction" text="학생별 막대그래프">
 			<font>
 				<Font size="15.0" />
 			</font>

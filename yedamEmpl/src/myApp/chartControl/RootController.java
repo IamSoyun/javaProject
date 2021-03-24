@@ -30,7 +30,9 @@ public class RootController implements Initializable {
 		pieList.add(new PieChart.Data("javaScript", 40));
 
 		pieChart.setData(pieList);
-
+		
+		
+		// barChart
 		// Series1 << Data
 		XYChart.Series<String, Integer> series1 = new XYChart.Series<String, Integer>();
 
@@ -65,10 +67,6 @@ public class RootController implements Initializable {
 		barChart.getData().add(series2);
 		barChart.getData().add(series3);
 
-		ObservableList<XYChart.Data<String, Integer>> barList = FXCollections.observableArrayList();
-		barList.add(new XYChart.Data<String, Integer>("2019", 50));
-		barList.add(new XYChart.Data<String, Integer>("2020", 40));
-		barList.add(new XYChart.Data<String, Integer>("2021", 60));
 
 	}
 

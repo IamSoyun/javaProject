@@ -54,5 +54,22 @@ public class Student {
 		return "Student [name=" + name + ", kor=" + kor + ", math=" + math + ", eng=" + eng + "]";
 	}
 	
+	@Override
+	public int hashCode() {
+		return this.name.hashCode();
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if(obj instanceof Student) {
+			Student s = (Student) obj;
+			return this.name.equals(s.name);
+		}else {
+			return false;
+		}
+		
+	}
+	
 
 }

@@ -2,11 +2,11 @@ package myApp.studentControl;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import common.BoardVO;
-import common.InputBoardVO;
-import common.InputDAO;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,23 +21,19 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.Callback;
 
 public class RootController implements Initializable {
 
 	private Stage primaryStage;
+	public Stage pieStage;
 
 	public void setPrimaryStage(Stage PrimaryStage) {
 		this.primaryStage = primaryStage;
@@ -55,7 +51,7 @@ public class RootController implements Initializable {
 
 		stdList.add(new Student("홍길동", 60, 70, 80));
 		stdList.add(new Student("김길동", 80, 60, 90));
-		stdList.add(new Student("박길동", 100, 50, 70));
+		stdList.add(new Student("박길동", 100, 50, 30));
 
 		// studentList - Student.name
 		TableColumn<Student, String> tcName = (TableColumn<Student, String>) studentList.getColumns().get(0);
@@ -75,8 +71,52 @@ public class RootController implements Initializable {
 
 		studentList.setItems(stdList);
 
+		// pieChart
+		studentList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Student>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Student> arg0, Student oldValue, Student newValue) {
+				viewPieChartAction(oldValue, newValue);
+			}
+
+		});
+
 	} // End initiallize
-	
+
+	public void viewPieChartAction(Student oldValue, Student newValue) {
+
+		Stage stage = new Stage(StageStyle.DECORATED);
+		stage.initModality(Modality.WINDOW_MODAL);
+		stage.initOwner(primaryStage);
+
+		AnchorPane ap = null;
+
+		try {
+			ap = FXMLLoader.load(getClass().getResource("pieChart.fxml"));
+			Scene scene = new Scene(ap);
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		PieChart stdPieChart = (PieChart) ap.lookup("#stdPieChart");
+		ObservableList<Data> pieList = FXCollections.observableArrayList();
+
+		if (newValue != null) {
+			pieList.add(new PieChart.Data("국어", newValue.getKor()));
+			pieList.add(new PieChart.Data("수학", newValue.getMath()));
+			pieList.add(new PieChart.Data("영어", newValue.getEng()));
+
+			stdPieChart.setData(pieList);
+
+		} else {
+
+		}
+
+	}
+
 	// form.fxml
 	public void addBtnAction(ActionEvent e) {
 
@@ -114,7 +154,7 @@ public class RootController implements Initializable {
 
 					stdList.add(std);
 					studentList.setItems(stdList);
-					
+
 				}
 
 			});
@@ -134,82 +174,77 @@ public class RootController implements Initializable {
 			e2.printStackTrace();
 		}
 
-	}
-	
-	
+	} // End form.fxml
+
 	// barChart.fxml
-		public void viewBarChartBtnAction(ActionEvent e) {
+	public void viewBarChartBtnAction(ActionEvent e) {
 
-			Stage stage = new Stage(StageStyle.DECORATED);
-			stage.initModality(Modality.WINDOW_MODAL);
-			stage.initOwner(primaryStage);
-			
-			AnchorPane ap = null;
-			try {
-				
-				ap = FXMLLoader.load(getClass().getResource("barChart.fxml"));
-				Scene scene = new Scene(ap);
-				stage.setScene(scene);
-				stage.show();
-				
-				// barChart
-				BarChart<String, Integer> stdBarChart = (BarChart<String, Integer>) ap.lookup("#stdBarChart");
-				
-				//국어
-				XYChart.Series<String, Integer> scoreKor = new XYChart.Series<String, Integer>();
-				ObservableList<XYChart.Data<String, Integer>> dataKor = FXCollections.observableArrayList();
-				
-				for(Student std : stdList) {
-					dataKor.add(new XYChart.Data<String, Integer>(std.getName(), std.getKor()));
-				}
-				
-				scoreKor.setData(dataKor);
-				scoreKor.setName("국어");
-				stdBarChart.getData().add(scoreKor);
-				
-				//수학
-				XYChart.Series<String, Integer> scoreMath = new XYChart.Series<String, Integer>();
-				ObservableList<XYChart.Data<String, Integer>> dataMath = FXCollections.observableArrayList();
-				
-				for(Student std : stdList) {
-					dataMath.add(new XYChart.Data<String, Integer>(std.getName(), std.getMath()));
-				}
-				
-				scoreMath.setData(dataMath);
-				scoreMath.setName("수학");
-				stdBarChart.getData().add(scoreMath);
-				
-				//영어
-				XYChart.Series<String, Integer> scoreEng = new XYChart.Series<String, Integer>();
-				ObservableList<XYChart.Data<String, Integer>> dataEng = FXCollections.observableArrayList();
-				
-				for(Student std : stdList) {
-					dataEng.add(new XYChart.Data<String, Integer>(std.getName(), std.getEng()));
-				}
-				
-				scoreEng.setData(dataEng);
-				scoreEng.setName("영어");
-				stdBarChart.getData().add(scoreEng);
-				
-				
-				// closeBtn
-				Button closeBtn = (Button) ap.lookup("#closeBtn");
-				closeBtn.setOnAction(new EventHandler<ActionEvent>() {
+		Stage stage = new Stage(StageStyle.DECORATED);
+		stage.initModality(Modality.WINDOW_MODAL);
+		stage.initOwner(primaryStage);
 
-					@Override
-					public void handle(ActionEvent arg0) {
-						stage.close();
-					}
+		AnchorPane ap = null;
+		try {
 
-				});
-				
-				
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			ap = FXMLLoader.load(getClass().getResource("barChart.fxml"));
+			Scene scene = new Scene(ap);
+			stage.setScene(scene);
+			stage.show();
+
+			// barChart
+			BarChart<String, Integer> stdsBarChart = (BarChart<String, Integer>) ap.lookup("#stdsBarChart");
+
+			// 국어
+			XYChart.Series<String, Integer> scoreKor = new XYChart.Series<String, Integer>();
+			ObservableList<XYChart.Data<String, Integer>> dataKor = FXCollections.observableArrayList();
+
+			for (Student std : stdList) {
+				dataKor.add(new XYChart.Data<String, Integer>(std.getName(), std.getKor()));
 			}
-			
-			
+
+			scoreKor.setData(dataKor);
+			scoreKor.setName("국어");
+			stdsBarChart.getData().add(scoreKor); //
+
+			// 수학
+			XYChart.Series<String, Integer> scoreMath = new XYChart.Series<String, Integer>();
+			ObservableList<XYChart.Data<String, Integer>> dataMath = FXCollections.observableArrayList();
+
+			for (Student std : stdList) {
+				dataMath.add(new XYChart.Data<String, Integer>(std.getName(), std.getMath()));
+			}
+
+			scoreMath.setData(dataMath);
+			scoreMath.setName("수학");
+			stdsBarChart.getData().add(scoreMath); //
+
+			// 영어
+			XYChart.Series<String, Integer> scoreEng = new XYChart.Series<String, Integer>();
+			ObservableList<XYChart.Data<String, Integer>> dataEng = FXCollections.observableArrayList();
+
+			for (Student std : stdList) {
+				dataEng.add(new XYChart.Data<String, Integer>(std.getName(), std.getEng()));
+			}
+
+			scoreEng.setData(dataEng);
+			scoreEng.setName("영어");
+			stdsBarChart.getData().add(scoreEng); //
+
+			// closeBtn
+			Button closeBtn = (Button) ap.lookup("#closeBtn");
+			closeBtn.setOnAction(new EventHandler<ActionEvent>() {
+
+				@Override
+				public void handle(ActionEvent arg0) {
+					stage.close();
+				}
+
+			});
+
+		} catch (IOException e1) {
+			e1.printStackTrace();
 		}
+
+	} // End barChar.fxml
 
 }

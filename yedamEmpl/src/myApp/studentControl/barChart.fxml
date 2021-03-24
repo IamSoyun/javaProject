@@ -10,7 +10,7 @@
 	xmlns="http://javafx.com/javafx/15.0.1"
 	xmlns:fx="http://javafx.com/fxml/1">
 	<children>
-		<BarChart id="stdBarChart" layoutX="35.0" layoutY="26.0"
+		<BarChart id="stdsBarChart" layoutX="35.0" layoutY="26.0"
 			prefHeight="245.0" prefWidth="438.0" >
 			<xAxis>
 				<CategoryAxis side="BOTTOM" />

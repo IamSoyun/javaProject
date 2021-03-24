@@ -13,7 +13,7 @@
 
 	<children>
 		<TableView fx:id="studentList" layoutX="41.0" layoutY="31.0"
-			prefHeight="244.0" prefWidth="577.0">
+			prefHeight="244.0" prefWidth="577.0" >
 			<columns>
 				<TableColumn fx:id="name" minWidth="0.0"
 					prefWidth="200.0" text="이름" />

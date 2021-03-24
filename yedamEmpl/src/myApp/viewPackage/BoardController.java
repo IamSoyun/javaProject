@@ -159,6 +159,7 @@ public class BoardController implements Initializable {
 		stage.initOwner(primaryStage);
 
 		try {
+			
 			AnchorPane ap = FXMLLoader.load(getClass().getResource("BoardAdd.fxml"));
 			Scene scene = new Scene(ap);
 			stage.setScene(scene);
@@ -171,20 +172,20 @@ public class BoardController implements Initializable {
 				public void handle(ActionEvent arg0) {
 					InputBoardVO vo = new InputBoardVO();
 
-					TextField txtTitle = (TextField) ap.lookup("#txtTitle");
-					vo.setTitle(txtTitle.getText());
+					TextField title = (TextField) ap.lookup("#title");
+					vo.setTitle(title.getText());
 
-					TextField txtPassword = (TextField) ap.lookup("#txtPassword");
-					vo.setPasswd(txtPassword.getText());
+					TextField pwd = (TextField) ap.lookup("#pwd");
+					vo.setPasswd(pwd.getText());
 
-					ComboBox comboPublic = (ComboBox) ap.lookup("#comboPublic");
-					vo.setPublicity(comboPublic.getValue().toString());
+					ComboBox publicity = (ComboBox) ap.lookup("#publicity");
+					vo.setPublicity(publicity.getValue().toString());
 
-					DatePicker dateExit = (DatePicker) ap.lookup("#dateExit");
-					vo.setExitDate(dateExit.getValue().toString());
+					DatePicker exitDate = (DatePicker) ap.lookup("#exitDate");
+					vo.setExitDate(exitDate.getValue().toString());
 
-					TextArea txtContent = (TextArea) ap.lookup("#txtContent");
-					vo.setContents(txtContent.getText());
+					TextArea content = (TextArea) ap.lookup("#content");
+					vo.setContents(content.getText());
 
 					InputDAO inputDao = new InputDAO();
 					inputDao.insertBo(vo);

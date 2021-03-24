@@ -17,13 +17,13 @@
 	xmlns="http://javafx.com/javafx/15.0.1" >
 	<children>
 		<Label layoutX="22.0" layoutY="36.0" text="제목" />
-		<TextField id="txtTitle" layoutX="84.0" layoutY="32.0"
+		<TextField id="title" layoutX="84.0" layoutY="32.0"
 			prefHeight="23.0" prefWidth="375.0" />
 		<Label layoutX="22.0" layoutY="69.0" text="비밀번호" />
-		<PasswordField id="txtPassword" layoutX="86.0"
+		<PasswordField id="pwd" layoutX="86.0"
 			layoutY="65.0" prefHeight="23.0" prefWidth="132.0" />
 		<Label layoutX="22.0" layoutY="104.0" text="공개" />
-		<ComboBox id="comboPublic" layoutX="86.0" layoutY="100.0"
+		<ComboBox id="publicity" layoutX="86.0" layoutY="100.0"
 			prefHeight="23.0" prefWidth="132.0" promptText="선택하세요">
 			<items>
 				<FXCollections fx:factory="observableArrayList">
@@ -33,11 +33,11 @@
 			</items>
 		</ComboBox>
 		<Label layoutX="240.0" layoutY="104.0" text="게시종료" />
-		<DatePicker id="dateExit" layoutX="296.0"
+		<DatePicker id="exitDate" layoutX="296.0"
 			layoutY="100.0" prefHeight="25.0" prefWidth="174.0"
 			promptText="날짜를 선택하세요" />
 		<Label layoutX="22.0" layoutY="135.0" text="내용" />
-		<TextArea id="txtContent" layoutX="22.0" layoutY="154.0"
+		<TextArea id="content" layoutX="22.0" layoutY="154.0"
 			prefHeight="132.0" prefWidth="440.0" />
 		<Separator layoutX="13.0" layoutY="320" prefHeight="0.0"
 			prefWidth="457.0" />

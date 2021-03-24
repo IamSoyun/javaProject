@@ -25,11 +25,13 @@ public class DButil {
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		
 		Connection conn = null;
+		
 		try {
 			conn = DriverManager.getConnection(url, user, passwd);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		return conn;
 	}
 
@@ -42,6 +44,7 @@ public class DButil {
 			e.printStackTrace();
 		}
 		return conn;
+		
 	}
 
 	public static void close(ResultSet rs, Statement stmt, Connection conn) {
@@ -55,6 +58,7 @@ public class DButil {
 			if (rs != null) {
 				rs.close();
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

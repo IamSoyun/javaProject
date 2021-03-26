@@ -33,7 +33,6 @@ import javafx.stage.StageStyle;
 public class RootController implements Initializable {
 
 	private Stage primaryStage;
-	public Stage pieStage;
 
 	public void setPrimaryStage(Stage PrimaryStage) {
 		this.primaryStage = primaryStage;

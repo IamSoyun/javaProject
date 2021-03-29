@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body id="bdy">
+    <table border="1" id="tbl">
+
+    </table>
+
+    <script>
+        let userList = [
+            ["홍길동", "1234"],
+            ["김길동", "2345"],
+            ["김민수", "5643"],
+            ["박민수", "4646"]
+        ];
+
+        let tbl2 = document.createElement("table");
+        tbl.setAttribute("border","1");
+
+        let tbl = document.getElementById("tbl");
+
+        for (let i = 0; i < userList.length; i++) {
+
+            let trTag, tdTag;
+            trTag = document.createElement("tr");
+            tbl.appendChild(trTag);
+
+            for (let j = 0; j < userList[0].length; j++) {
+                tdTag = document.createElement("td");
+                tdTag.append(userList[i][j]);
+                trTag.appendChild(tdTag);
+            }
+        }
+    </script>
+</body>
+
+</html>

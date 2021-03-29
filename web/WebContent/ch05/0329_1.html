@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1" id="tbl">
+
+    </table>
+
+<script>
+    let id = document.createElement("tr");
+    let tblTag = document.getElementById("tbl");
+    tblTag.appendChild(id);
+
+    let idLabel = document.createElement("td");
+    idLabel.append("아이디: ");
+    id.appendChild(idLabel);
+
+    let idText = document.createElement("input");
+    id.appendChild(idText);
+
+    
+    let pwd = document.createElement("tr");
+    tblTag.appendChild(pwd);
+
+    let pwdLabel = document.createElement("td");
+    pwdLabel.append("비밀번호: ");
+    pwd.appendChild(pwdLabel);
+
+    let pwdText = document.createElement("input");
+    pwdText.setAttribute("type","password");
+    pwd.appendChild(pwdText);
+
+
+    let btn = document.createElement("tr");
+    tblTag.appendChild(btn);
+
+    let btnSave = document.createElement("button");
+    btnSave.append("저장");
+    btnSave.setAttribute("align","center");
+    btn.appendChild(btnSave);
+
+    let btnCancel = document.createElement("button");
+    btnCancel.append("취소");
+    btn.appendChild(btnCancel);
+
+
+</script>
+
+</body>
+</html>

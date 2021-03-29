@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="outputscript.jsp" method="get" id="fm"> </form>
+    
+    <script>
+        let fm = document.getElementById("fm");
+
+        let tit, lableTag, inputTag, btnTag;
+        tit = document.createElement("h2");
+        tit.append("스크립트로 만드는 입력양식");
+        fm.appendChild(tit);
+
+        labelTag = document.createElement("p");
+        labelTag.append("이름: ");
+        fm.appendChild(labelTag);
+        
+        inputTag = document.createElement("input");
+        inputTag.setAttribute("type","text");
+        inputTag.setAttribute("name","name");
+        inputTag.setAttribute("placeholder","홍길동")
+        labelTag.appendChild(inputTag);
+
+        labelTag = document.createElement("p");
+        labelTag.append("학과: ");
+        fm.appendChild(labelTag);
+        
+        inputTag = document.createElement("input");
+        inputTag.setAttribute("type","text");
+        inputTag.setAttribute("name","major");
+        inputTag.setAttribute("placeholder","컴퓨터공학과")
+        labelTag.appendChild(inputTag);
+
+        btnTag = document.createElement("input");
+        btnTag.setAttribute("type","submit");
+        fm.appendChild(btnTag);
+        
+        
+    </script>
+</body>
+</html>

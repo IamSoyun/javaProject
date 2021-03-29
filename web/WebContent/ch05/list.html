@@ -16,8 +16,20 @@
     </ul>
 
     <ul id="fruit"></ul>
+    <button> 클릭 </button>
     <script>
-        ldt liTag = document.createElement("li");
+        let liTag = document.createElement("li"); //li라는 tag생성
+        let text = document.createTextNode("Apple"); //li 안에 텍스트값을 생성
+        liTag.append(text); //<li>Apple<l/i>
+        let ulTag = document.getElementById("fruit");
+        ulTag.appendChild(liTag); // ulTag에 하위값으로 liTag 달아주기 <ul><li>Apple</li></ul>
+
+        liTag = document.createElement("li");
+        text = document.createTextNode("Banana")
+        liTag.appendChild(text);
+        ulTag.appendChild(liTag);
+        
+        let btn = document.createElement("button");
     </script>
 </body>
 

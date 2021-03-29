@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch05/03_get.html</title>
+</head>
+
+<body>
+    <section>
+        <article>
+            <form action="getstd.jsp" method="get">
+
+                <table border="1">
+                    <tr>
+                        <td> 이름 </td>
+                        <td> <input type="text" name="name" placeholder="이름"> </td>
+                    </tr>
+                    <tr>
+                        <td> 성별 </td>
+                        <td>
+                            <input type="radio" name="sex" value="여자" checked> 여자
+                            <input type="radio" name="sex" value="남자"> 남자
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> 학년 </td>
+                        <td> <input type="radio" name="year" value="1학년" checked> 1학년
+                            <input type="radio" name="year" value="2학년"> 2학년
+                            <input type="radio" name="year" value="3학년"> 3학년
+                            <input type="radio" name="year" value="4학년"> 4학년
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>관심</td>
+                        <td> <input type="checkbox" name="subject" value="HTML5" checked> HTML5
+                            <input type="checkbox" name="subject" value="CSS3"> CSS3
+                            <input type="checkbox" name="subject" value="JavaScript"> JavaScript
+                            <input type="checkbox" name="subject" value="Jquery"> Jquery
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>취미</td>
+                        <td> <select name="hobby" style="font-size: medium;">
+                                <option value="reading" selected> 독서 </option>
+                                <option value="exercise"> 운동 </option>
+                                <option value="cooking"> 요리 </option>
+                                <option value="nap"> 낮잠 </option>
+                            </select></td>
+                    </tr>
+                    <tr>    
+                        <td colspan="2"> <input type="submit" value="제출">
+                            <input type="reset" value="다시작성">
+                        </td>
+                    </tr>
+                </table>
+
+            </form>
+        </article>
+    </section>
+</body>
+
+</html>
